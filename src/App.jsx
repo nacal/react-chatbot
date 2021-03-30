@@ -15,8 +15,8 @@ export default class App extends React.Component {
   }
   render() {
     return (
-      <section className="c-section">
-        <div className="c-box">
+      <section className="section center">
+        <div className="box">
 
         </div>
       </section>
