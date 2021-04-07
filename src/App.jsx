@@ -1,5 +1,5 @@
 import React from 'react';
-import './assets/styles/style.css';
+import './assets/styles/style.scss';
 import defaultDataset from "./dataset"
 import {AnswersList} from "./components"
 
