@@ -30,8 +30,8 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <section className="section center">
-        <div className="box">
+      <section className="l-section c-center">
+        <div className="p-box">
           <AnswersList answers={this.state.answers} />
         </div>
       </section>
