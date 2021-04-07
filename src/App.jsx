@@ -1,5 +1,5 @@
 import React from 'react';
-import './assets/styles/style.css';
+import './assets/styles/style.scss';
 import defaultDataset from "./dataset"
 import {AnswersList} from "./components"
 
@@ -30,8 +30,8 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <section className="section center">
-        <div className="box">
+      <section className="l-section c-center">
+        <div className="p-box">
           <AnswersList answers={this.state.answers} />
         </div>
       </section>
