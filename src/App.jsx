@@ -2,6 +2,7 @@ import React from 'react';
 import './assets/styles/style.scss';
 import defaultDataset from "./dataset"
 import {AnswersList} from "./components"
+import {Chats} from "./components"
 
 export default class App extends React.Component {
   constructor(props) {
@@ -9,14 +10,14 @@ export default class App extends React.Component {
     this.state = {
       answers: [],
       chats: [],
-      currenrId: 'init',
+      currentId: 'init',
       dataset: defaultDataset,
       open: false
     }
   }
 
   initAnswer = () => {
-    const initDataset = this.state.dataset[this.state.currenrId]
+    const initDataset = this.state.dataset[this.state.currentId]
     const initAnswer = initDataset.answers
 
     this.setState( {
@@ -24,7 +25,23 @@ export default class App extends React.Component {
     })
   }
 
+  initChats = () => {
+    const initDataset = this.state.dataset[this.state.currentId]
+    const chat = {
+      text: initDataset.question,
+      type: 'question'
+    }
+
+    const chats = this.state.chats
+    chats.push(chat)
+
+    this.setState( {
+      chats: chats
+    })
+  }
+
   componentDidMount() {
+    this.initChats()
     this.initAnswer()
   }
 
@@ -32,6 +49,7 @@ export default class App extends React.Component {
     return (
       <section className="l-section c-center">
         <div className="p-box">
+          <Chats chats={this.state.chats}/>
           <AnswersList answers={this.state.answers} />
         </div>
       </section>
