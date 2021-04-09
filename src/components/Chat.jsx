@@ -13,9 +13,9 @@ const Chat = (props) => {
     <ListItem className={classes}>
         <ListItemAvatar>
           {isQuestion ? (
-            <Avatar alt="icon" src={Profile} />
+            <Avatar alt="nkthkrのプロフィール画像" src={Profile} />
           ) : (
-            <Avatar alt="icon" src={NoProfile} />
+            <Avatar alt="質問者のプロフィール画像" src={NoProfile} />
           )}
         </ListItemAvatar>
         <div className="p-chat__bubble">{props.text}</div>
