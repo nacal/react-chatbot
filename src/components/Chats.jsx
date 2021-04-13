@@ -7,7 +7,9 @@ const useStyles = makeStyles(() => ({
   'button': {
     height: 400,
     padding: '0',
-    overflow: 'auto'
+    overflow: 'auto',
+    backgroundColor: '#eee',
+    borderRadius: '4px'
   },
 }));
 
