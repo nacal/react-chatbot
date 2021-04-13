@@ -11,20 +11,23 @@
 
 .p-box {
     background: #fff;
-    border: 1px solid rgba(0,0,0,0.3);
+    border: 2px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
-    height: 592px;
+    height: 620px;
     max-width: 432px;
-    padding: 0 1rem;
+    padding: 1rem;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .p-answersList {
     display: flex;
     flex-flow: column;
-    justify-content: flex-end;
-    height: 192px;
+    justify-content: center;
+    height: 176px;
 }
 
 .p-chat {
