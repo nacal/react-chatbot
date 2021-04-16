@@ -3,7 +3,7 @@ import './assets/styles/style.scss';
 import defaultDataset from "./dataset"
 import {AnswersList} from "./components"
 import {Chats} from "./components"
-import FormDialog from "./components/Forms/FormDialog"
+import {FormDialog} from "./components/Forms/index"
 
 export default class App extends React.Component {
   constructor(props) {
