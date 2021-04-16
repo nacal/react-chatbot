@@ -1,7 +1,7 @@
 import React from 'react'
 import './assets/styles/style.scss'
 import defaultDataset from "./dataset"
-import {AnswersList} from "./components"
+import {AnswersList} from "./components/Answers/index"
 import {Chats} from "./components"
 import {FormDialog} from "./components/Forms/index"
 
