@@ -1,7 +1,7 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import {Chat} from './index';
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import List from '@material-ui/core/List'
+import {Chat} from './index'
 
 const useStyles = makeStyles(() => ({
   'button': {
@@ -14,7 +14,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Chats = (props) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return(
     <List className={classes.button} id={'scroll-area'}>
