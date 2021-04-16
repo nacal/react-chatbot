@@ -26,11 +26,41 @@ export default class FormDialog extends React.Component {
   }
 
   inputEmail = (event) => {
-    this.setState({name: event.target.value})
+    this.setState({email: event.target.value})
   }
 
   inputDescription = (event) => {
-    this.setState({name: event.target.value})
+    this.setState({description: event.target.value})
+  }
+
+  submitForm = () => {
+    const name = this.state.name
+    const email = this.state.email
+    const description = this.state.description
+
+    const payload = {
+      text: '------------------------\n' +
+            'お問い合わせ\n' +
+            '【お名前】' + name + '\n' +
+            '【Email】' + email + '\n' +
+            '【内容】\n' + description +
+            '------------------------'
+    }
+
+    const url = process.env.REACT_APP_SLACK_API_URL
+
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    }).then(() => {
+      alert('送信が完了しました。追ってご連絡します。')
+      this.setState({
+        name: '',
+        email: '',
+        description: ''
+      })
+      return this.props.handleClose()
+    })
   }
 
   render() {
@@ -65,15 +95,15 @@ export default class FormDialog extends React.Component {
             rows={5}
             value={this.state.description}
             type={'text'}
-            onChange={this.Description}
+            onChange={this.inputDescription}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={this.props.handleClose} color="primary">
-            kyannse
+            キャンセル
           </Button>
-          <Button onClick={this.props.handleClose} color="primary" autoFocus>
-            Agree
+          <Button onClick={this.submitForm} color="primary" autoFocus>
+            送信
           </Button>
         </DialogActions>
       </Dialog>
