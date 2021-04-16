@@ -1,9 +1,9 @@
 import React from 'react'
-import './assets/styles/style.scss'
+import 'assets/styles/style.scss'
 import defaultDataset from "./dataset"
-import {AnswersList} from "./components/Answers/index"
-import {Chats} from "./components/Chats/index"
-import {FormDialog} from "./components/Forms/index"
+import {AnswersList} from "components/Answers/index"
+import {Chats} from "components/Chats/index"
+import {FormDialog} from "components/Forms/index"
 
 export default class App extends React.Component {
   constructor(props) {
