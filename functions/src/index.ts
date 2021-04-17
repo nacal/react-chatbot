@@ -1,6 +1,4 @@
-// @ts-ignore
 import * as functions from 'firebase-functions';
-// @ts-ignore
 import * as admin from "firebase-admin";
 admin.initializeApp();
 const db = admin.firestore();
