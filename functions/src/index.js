@@ -3,14 +3,14 @@ const admin = require('firebase-admin');
 admin.initializeApp();
 const db = admin.firestore();
 
-const sendResponse = () => {
+const sendResponse = (response, statusCode, body) => {
   response.send({
     statusCode,
     body: JSON.stringify(body)
   })
 }
 
-exports.addDataset = functions.https.onRequest(async () => {
+exports.addDataset = functions.https.onRequest(async (req, res) => {
   if (req.method != 'POST') {
     sendResponse(res, 405, { error: 'Invalid Request.' })
   } else {
