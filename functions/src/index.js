@@ -1,16 +1,16 @@
-import * as functions from 'firebase-functions';
-import * as admin from "firebase-admin";
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
 admin.initializeApp();
 const db = admin.firestore();
 
-const sendResponse = (response: functions.Response, statusCode: number, body: any) => {
+const sendResponse = () => {
   response.send({
     statusCode,
     body: JSON.stringify(body)
   })
 }
 
-export const addDataset = functions.https.onRequest(async (req: any, res: any) => {
+exports.addDataset = functions.https.onRequest(async () => {
   if (req.method != 'POST') {
     sendResponse(res, 405, { error: 'Invalid Request.' })
   } else {
