@@ -33,25 +33,50 @@ export default class FormDialog extends React.Component {
     this.setState({description: event.target.value})
   }
 
+  validateEmailFormat = (email) => {
+    const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    return regex.test(email)
+  }
+
+  validateRequiredInput = (...args) => {
+    let isBlank = false
+    for (let i = 0; i < args.length; i=(i+1)|0) {
+      if (args[i] === "") {
+        isBlank = true
+      }
+    }
+    return isBlank
+  }
+
   submitForm = () => {
     const name = this.state.name
     const email = this.state.email
     const description = this.state.description
+    const isBlank = this.validateRequiredInput(name, email, description)
+    const isValidEmail = this.validateEmailFormat(email)
 
-    const payload = {
-      text: '------------------------\n' +
-            'お問い合わせ\n' +
-            '【お名前】' + name + '\n' +
-            '【Email】' + email + '\n' +
-            '【内容】\n' + description +
-            '------------------------'
+    if (isBlank) {
+      alert('必須入力欄が空白です。')
+      return false
+    } else if (!isValidEmail) {
+      alert('メールアドレスの書式が異なります。')
+      return false
+    } else {
+      this.payload = {
+        text: '------------------------\n' +
+              'お問い合わせ\n' +
+              'お名前:' + name + '\n' +
+              'Email:' + email + '\n' +
+              '内容\n' + description + '\n' +
+              '------------------------'
+      }
     }
 
     const url = process.env.REACT_APP_SLACK_API_URL
 
     fetch(url, {
       method: 'POST',
-      body: JSON.stringify(payload)
+      body: JSON.stringify(this.payload)
     }).then(() => {
       alert('送信が完了しました。追ってご連絡します。')
       this.setState({
